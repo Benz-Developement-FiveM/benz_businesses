@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Tablet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="tablet" class="hidden">
+        <div class="device">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="logo">BT</div>
+                    <div>
+                        <p id="businessType">Business</p>
+                        <h2 id="businessName">Business Tablet</h2>
+                    </div>
+                </div>
+                <button type="button" class="tab active" data-tab="dashboard">Dashboard</button>
+                <button type="button" class="tab" data-tab="accounts">Accounts</button>
+                <button type="button" class="tab" data-tab="employees">Employees</button>
+                <button type="button" class="tab" data-tab="supplies">Supplies</button>
+                <button type="button" class="tab" data-tab="menu">Menu Editor</button>
+                <button type="button" class="tab" data-tab="dj">DJ Booths</button>
+                <button type="button" class="tab" data-tab="stations">Stations</button>
+                <button type="button" class="tab" data-tab="delete-stations">Delete Stations</button>
+                <button id="closeBtn" type="button" class="close">Close</button>
+            </aside>
+
+            <main class="content">
+                <section id="page-dashboard" class="page active">
+                    <h1>Dashboard</h1>
+                    <div class="cards">
+                        <div class="card"><p>Bank Balance</p><h2 id="dashBalance">$0</h2></div>
+                        <div class="card"><p>Cash</p><h2 id="dashCash">$0</h2></div>
+                        <div class="card"><p>Employees</p><h2 id="dashEmployees">0</h2></div>
+                        <div class="card"><p>Active Deliveries</p><h2 id="dashDeliveries">0</h2></div>
+                    </div>
+                </section>
+
+                <section id="page-accounts" class="page">
+                    <h1>Accounts</h1>
+                    <div class="split">
+                        <div class="card">
+                            <h3>Deposit</h3>
+                            <input id="depositAmount" type="number" min="0" placeholder="Amount">
+                            <input id="depositNote" placeholder="Note">
+                            <button id="depositBtn" type="button">Deposit</button>
+                        </div>
+                        <div class="card">
+                            <h3>Withdraw</h3>
+                            <input id="withdrawAmount" type="number" min="0" placeholder="Amount">
+                            <input id="withdrawNote" placeholder="Note">
+                            <button id="withdrawBtn" type="button">Withdraw</button>
+                        </div>
+                    </div>
+                    <div class="card"><h3>Transactions</h3><div id="transactions"></div></div>
+                </section>
+
+                <section id="page-employees" class="page">
+                    <h1>Employees</h1>
+                    <div class="card">
+                        <h3>Hire Online Player</h3>
+                        <div class="inline">
+                            <input id="hireId" type="number" min="1" placeholder="Player ID">
+                            <select id="hireGrade"></select>
+                            <button id="hireBtn" type="button">Hire</button>
+                        </div>
+                    </div>
+                    <div class="card"><h3>Online Employees</h3><div id="employees"></div></div>
+                </section>
+
+                <section id="page-supplies" class="page">
+                    <h1>Supplies</h1>
+                    <div class="card"><h3>Order Supplies</h3><div id="supplierItems"></div><button id="orderBtn" type="button">Place Order</button></div>
+                    <div class="card"><h3>Deliveries</h3><div id="orders"></div></div>
+                </section>
+
+                <section id="page-menu" class="page">
+                    <h1>Menu Editor</h1>
+                    <div id="menuStations"></div>
+                </section>
+
+                <section id="page-dj" class="page">
+                    <h1>DJ Booths</h1>
+                    <div id="placeDjCard" class="card">
+                        <h3>Place DJ Booth</h3>
+                        <div class="admin-grid">
+                            <input id="newDjLabel" placeholder="DJ Booth Label" value="DJ Booth">
+                            <input id="newDjHearRadius" type="number" value="45" placeholder="Hear Radius">
+                            <input id="newDjUseRadius" type="number" value="2" placeholder="Use Radius">
+                            <button id="placeDjBtn" type="button">Place DJ Booth Here</button>
+                        </div>
+                    </div>
+                    <div id="djStations"></div>
+                </section>
+
+                <section id="page-stations" class="page">
+                    <h1>Stations</h1>
+                    <div id="placeStationCard" class="card">
+                        <h3>Place Station</h3>
+                        <div class="station-place-grid">
+                            <input id="stationLabel" placeholder="Station Label" value="Station">
+                            <select id="stationType">
+                                <option value="stash">Stash</option>
+                                <option value="fridge">Fridge</option>
+                                <option value="register">Register / Charge</option>
+                                <option value="food">Food Crafting</option>
+                                <option value="drink">Drink Crafting</option>
+                                <option value="menu_editor">Menu Editor</option>
+                                <option value="business_ui">Business Account</option>
+                                <option value="delivery">Supply Delivery</option>
+                                <option value="dj">DJ Booth</option>
+                            </select>
+                            <input id="stationSizeX" type="number" value="1.4" step="0.1" placeholder="Size X">
+                            <input id="stationSizeY" type="number" value="1.4" step="0.1" placeholder="Size Y">
+                            <input id="stationSizeZ" type="number" value="1.0" step="0.1" placeholder="Size Z">
+                            <input id="stationSlots" type="number" value="60" placeholder="Slots">
+                            <input id="stationWeight" type="number" value="150000" placeholder="Weight">
+                            <input id="stationUseRadius" type="number" value="2" step="0.1" placeholder="Use Radius">
+                            <input id="stationHearRadius" type="number" value="45" step="1" placeholder="Hear Radius">
+                            <button id="placeStationBtn" type="button">Place Station Here</button>
+                        </div>
+                    </div>
+                    <div class="card"><h3>Storage Stations</h3><div id="stashStations"></div></div>
+                </section>
+
+                <section id="page-delete-stations" class="page">
+                    <h1>Delete Placed Stations</h1>
+                    <div class="card"><div id="deleteStations"></div></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+        <div class="admin-device">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="logo">AP</div>
+                    <div><p>Admin</p><h2>Business Panel</h2></div>
+                </div>
+                <div id="adminBusinessList"></div>
+                <button id="adminCloseBtn" type="button" class="close">Close</button>
+            </aside>
+
+            <main class="content">
+                <section class="page active">
+                    <h1 id="adminTitle">Select a Business</h1>
+                    <div id="adminEditor" class="hidden">
+                        <div id="adminSectionTabs" class="admin-section-tabs">
+                            <button type="button" class="admin-section-tab" data-admin-section="businesses">Businesses</button>
+                            <button type="button" class="admin-section-tab active" data-admin-section="settings">Settings</button>
+                            <button type="button" class="admin-section-tab" data-admin-section="place">Place Station</button>
+                            <button type="button" class="admin-section-tab" data-admin-section="business-supplies">Business Supplies</button>
+                            <button type="button" class="admin-section-tab" data-admin-section="global-supplies">Global Supplies</button>
+                            <button type="button" class="admin-section-tab" data-admin-section="stations">Stations</button>
+                        </div>
+
+                        <div class="card admin-section hidden" data-admin-section-panel="businesses">
+                            <h3>Add / Delete Businesses</h3>
+                            <p class="note">Create or delete businesses from the admin panel only.</p>
+                            <div class="admin-grid">
+                                <input id="adminNewBusinessId" placeholder="Business ID e.g. pearl">
+                                <input id="adminNewBusinessLabel" placeholder="Business Name e.g. Pearl Restaurant">
+                                <input id="adminNewBusinessJob" placeholder="Job Name e.g. pearl">
+                                <input id="adminNewBusinessType" placeholder="Type e.g. restaurant">
+                                <input id="adminNewBusinessUiTitle" placeholder="Tablet Title">
+                                <input id="adminNewBusinessColor" placeholder="#38bdf8">
+                                <label class="checkline"><input id="adminNewBusinessBlipEnabled" type="checkbox" checked> Create map blip</label>
+                                <label class="checkline"><input id="adminNewBusinessBlipHere" type="checkbox" checked> Place blip at my current location</label>
+                                <input id="adminNewBusinessBlipLabel" placeholder="Blip Label">
+                                <input id="adminNewBusinessBlipSprite" type="number" value="439" placeholder="Blip Sprite">
+                                <input id="adminNewBusinessBlipColor" type="number" value="2" placeholder="Blip Color">
+                                <input id="adminNewBusinessBlipScale" type="number" step="0.05" value="0.75" placeholder="Blip Scale">
+                                <button id="adminCreateBusinessBtn" type="button">Add Business</button>
+                            </div>
+                            <div class="card danger-zone">
+                                <h3>Delete Selected Business</h3>
+                                <button id="adminDeleteBusinessBtn" type="button" class="danger">Delete Selected Business</button>
+                            </div>
+                        </div>
+
+                        <div class="card admin-section" data-admin-section-panel="settings">
+                            <h3>Business Settings</h3>
+                            <div class="admin-grid">
+                                <input id="adminBusinessLabel" placeholder="Label">
+                                <input id="adminBusinessJob" placeholder="Job">
+                                <input id="adminBusinessType" placeholder="Type">
+                                <input id="adminBusinessUiTitle" placeholder="Tablet UI Title">
+                                <input id="adminBusinessColor" placeholder="#38bdf8">
+                                <label class="checkline"><input id="adminBusinessBlipEnabled" type="checkbox"> Show map blip</label>
+                                <label class="checkline"><input id="adminBusinessBlipHere" type="checkbox"> Move blip to my current location when saving</label>
+                                <input id="adminBusinessBlipLabel" placeholder="Blip Label">
+                                <input id="adminBusinessBlipSprite" type="number" placeholder="Blip Sprite">
+                                <input id="adminBusinessBlipColor" type="number" placeholder="Blip Color">
+                                <input id="adminBusinessBlipScale" type="number" step="0.05" placeholder="Blip Scale">
+                                <div class="admin-grid">
+                                    <input id="adminBusinessBlipX" type="number" step="0.01" placeholder="Blip X">
+                                    <input id="adminBusinessBlipY" type="number" step="0.01" placeholder="Blip Y">
+                                    <input id="adminBusinessBlipZ" type="number" step="0.01" placeholder="Blip Z">
+                                </div>
+                                <button id="adminSaveBusinessBtn" type="button">Save Business</button>
+                            </div>
+                        </div>
+
+                        <div class="card admin-section hidden" data-admin-section-panel="place">
+                            <h3>Place Station At My Location</h3>
+                            <div class="admin-grid">
+                                <input id="adminStationLabel" placeholder="Station Label" value="Station">
+                                <select id="adminStationType">
+                                    <option value="stash">Stash</option><option value="fridge">Fridge</option><option value="register">Register / Charge</option><option value="food">Food Crafting</option><option value="drink">Drink Crafting</option><option value="menu_editor">Menu Editor</option><option value="business_ui">Business Account</option><option value="delivery">Supply Delivery</option><option value="dj">DJ Booth</option>
+                                </select>
+                                <input id="adminSizeX" type="number" value="1.4" step="0.1" placeholder="Size X">
+                                <input id="adminSizeY" type="number" value="1.4" step="0.1" placeholder="Size Y">
+                                <input id="adminSizeZ" type="number" value="1.0" step="0.1" placeholder="Size Z">
+                                <input id="adminSlots" type="number" value="60" placeholder="Slots">
+                                <input id="adminWeight" type="number" value="150000" placeholder="Weight">
+                                <input id="adminUseRadius" type="number" value="2" step="0.1" placeholder="Use Radius">
+                                <input id="adminHearRadius" type="number" value="45" step="1" placeholder="Hear Radius">
+                                <button id="adminPlaceStationBtn" type="button">Place Station</button>
+                            </div>
+                        </div>
+
+                        <div class="card admin-section hidden" data-admin-section-panel="business-supplies">
+                            <h3>Selected Business Supply Store</h3>
+                            <div class="admin-grid">
+                                <input id="adminBusinessSupplyItem" placeholder="Item name e.g. tomato">
+                                <input id="adminBusinessSupplyLabel" placeholder="Label e.g. Tomato">
+                                <input id="adminBusinessSupplyPrice" type="number" min="0" value="10" placeholder="Price">
+                                <input id="adminBusinessSupplyAmount" type="number" min="1" value="1" placeholder="Amount per pack">
+                                <select id="adminBusinessSupplyEnabled"><option value="true">Enabled</option><option value="false">Disabled</option></select>
+                                <button id="adminSaveBusinessSupplyBtn" type="button">Save Business Supply Item</button>
+                            </div>
+                            <div id="adminBusinessSupplyItems"></div>
+                        </div>
+
+                        <div class="card admin-section hidden" data-admin-section-panel="global-supplies">
+                            <h3>Global Supply Store Items</h3>
+                            <div class="admin-grid">
+                                <input id="adminSupplyItem" placeholder="Item name e.g. tomato">
+                                <input id="adminSupplyLabel" placeholder="Label e.g. Tomato">
+                                <input id="adminSupplyPrice" type="number" min="0" value="10" placeholder="Price">
+                                <input id="adminSupplyAmount" type="number" min="1" value="1" placeholder="Amount per pack">
+                                <select id="adminSupplyEnabled"><option value="true">Enabled</option><option value="false">Disabled</option></select>
+                                <button id="adminSaveSupplyBtn" type="button">Save Global Supply Item</button>
+                            </div>
+                            <div id="adminSupplyItems"></div>
+                        </div>
+
+                        <div class="card admin-section hidden" data-admin-section-panel="stations">
+                            <h3>Stations</h3>
+                            <div id="adminStations"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+Qbox All Businesses
+Version: 4.0.0
+
+Cleaned for:
+- latest Qbox
+- ox_inventory
+- ox_target
+- ox_lib
+- oxmysql
+- xsound
+
+Bridge systems removed.
+Qbox only release.
