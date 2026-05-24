@@ -13,7 +13,7 @@ Qbox/QBX business resource for FiveM.
   - price
   - craft time
   - ingredients
-
+------------------------------------------------------------------
 ## Required resources
 
 - qbx_core
@@ -21,7 +21,7 @@ Qbox/QBX business resource for FiveM.
 - ox_target
 - ox_inventory
 - oxmysql
-
+-------------------------------------------------------------------
 ## Install
 
 1. Put `benz_businesses` in your resources folder.
@@ -37,7 +37,7 @@ ensure benz_businesses
    - vanilla
 
 4. Add your items to `ox_inventory/data/items.lua`.
-
+---------------------------------------------------------------------
 ## In-game menu editing
 
 Each business now has an `Edit Menu` station.
@@ -49,7 +49,7 @@ You can change the required grade in:
 ```lua
 Config.MenuEditorMinGrade = 4
 ```
-
+----------------------------------------------------------------------
 ## Add items in game
 /businessadmin
 
@@ -63,7 +63,7 @@ Ingredient format:
 ```
 bread:1, meat:1, lettuce:1
 ```
-
+----------------------------------------------------------------------------
 ## Station types
 
 - `stash`
