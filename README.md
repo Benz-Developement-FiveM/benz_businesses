@@ -24,11 +24,11 @@ Qbox/QBX business resource for FiveM.
 
 ## Install
 
-1. Put `qbox_all_businesses` in your resources folder.
+1. Put `benz_businesses` in your resources folder.
 2. Add this to `server.cfg`:
 
 ```cfg
-ensure qbox_all_businesses
+ensure benz_businesses
 ```
 
 3. Make sure your jobs exist:
@@ -50,32 +50,8 @@ You can change the required grade in:
 Config.MenuEditorMinGrade = 4
 ```
 
-## Add items to a station in config
-
-Open `shared/config.lua`.
-
-Food/drink stations use this format:
-
-```lua
-items = {
-    {
-        label = 'Burger',
-        item = 'burger',
-        amount = 1,
-        price = 50,
-        time = 4000,
-        ingredients = {
-            bread = 1,
-            meat = 1,
-            lettuce = 1
-        }
-    }
-}
-```
-
 ## Add items in game
-
-Go to the business `Edit Menu` third-eye station.
+/businessadmin
 
 Choose:
 - station
@@ -84,21 +60,8 @@ Choose:
 
 Ingredient format:
 
-```txt
-bread:1, meat:1, lettuce:1
 ```
-
-## Database
-
-The script auto-creates this table:
-
-```sql
-CREATE TABLE IF NOT EXISTS qbox_business_menus (
-    business VARCHAR(50) NOT NULL,
-    station VARCHAR(50) NOT NULL,
-    items LONGTEXT NOT NULL,
-    PRIMARY KEY (business, station)
-);
+bread:1, meat:1, lettuce:1
 ```
 
 ## Station types
